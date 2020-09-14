@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: rgba(255, 0, 0, 0.5);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,6 +22,8 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800 !important;
 }
 
 .App-link {
@@ -35,4 +37,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.menu-title{
+  color: white;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800 !important;
 }
