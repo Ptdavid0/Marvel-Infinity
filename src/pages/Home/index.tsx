@@ -1,18 +1,32 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import "./styles.css";
-import MarvelApi from "../../services/api";
+import { getAllCharacters } from "../../services/api";
+import Card from "../../components/Card";
+
+interface Character {
+  name: string;
+  id: number;
+  recourceURI: string;
+  description?: string;
+}
 
 const Home: React.FC = () => {
-  const [comics, setComics] = useState([]);
-
+  const [character, setCharacter] = useState<[Character]>();
   useEffect(() => {
-    MarvelApi.getAllComics((response: any) => {
-      setComics(response.data.data.results);
+    getAllCharacters((response: any) => {
+      setCharacter(response.data.data.results);
     });
-    console.log(comics);
+    console.log(character);
   }, []);
-  return <div>Home Page</div>;
-};
 
+  return (
+    <div>
+      {character &&
+        character.map((character) => {
+          return <Card character={character} key={character.id} />;
+        })}
+    </div>
+  );
+};
 export default Home;
