@@ -1,14 +1,9 @@
 import React from "react";
 import "./App.css";
+import Home from "./pages/Home";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="menu-title">Marvel Infinity</h1>
-      </header>
-    </div>
-  );
-}
+const App: React.FC = () => {
+  return <Home />;
+};
 
 export default App;
