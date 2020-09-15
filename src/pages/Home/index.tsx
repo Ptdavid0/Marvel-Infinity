@@ -2,13 +2,16 @@ import React from "react";
 import { useEffect, useState } from "react";
 import "./styles.css";
 import { getAllCharacters } from "../../services/api";
-import Card from "../../components/Card";
 
 interface Character {
   name: string;
   id: number;
-  recourceURI: string;
+  resourceURI: string;
   description?: string;
+  thumbnail: {
+    path: string;
+    extension: string;
+  };
 }
 
 const Home: React.FC = () => {
@@ -17,14 +20,26 @@ const Home: React.FC = () => {
     getAllCharacters((response: any) => {
       setCharacter(response.data.data.results);
     });
-    console.log(character);
   }, []);
 
   return (
-    <div>
+    <div className="container">
       {character &&
         character.map((character) => {
-          return <Card character={character} key={character.id} />;
+          return (
+            <div className="hero-container">
+              <div className="hero-card">
+                <img
+                  className="hero-card-image"
+                  src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                  alt=""
+                />
+                <h3>{character.name}</h3>
+              </div>
+              <div className="hero-charts">Charts</div>
+              <div className="hero-button"></div>
+            </div>
+          );
         })}
     </div>
   );
