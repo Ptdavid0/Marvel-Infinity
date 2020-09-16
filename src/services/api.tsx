@@ -6,14 +6,17 @@ const privateKey = `a514b803a5b03229bd2738a2e2f263114a88caab`;
 const ts = Date.now();
 const hash = md5(ts + privateKey + publicKey);
 let opts = `characters`;
-let url = `https://gateway.marvel.com/v1/public/${opts}?apikey=${publicKey}&hash=${hash}&ts=${ts}&limit=50`;
+let url = `https://gateway.marvel.com/v1/public/${opts}?apikey=${publicKey}&hash=${hash}&ts=${ts}&limit=100`;
 
 export const getAllCharacters = (callback: Function) => {
   axios.get(url).then((response: any) => {
     console.log(response.data.data.results);
+    const results = response.data.data.results.filter(
+      (character: any) => character.thumbnail.extension === "png"
+    );
 
     if (callback) {
-      callback(response);
+      callback(results);
     }
   });
 };

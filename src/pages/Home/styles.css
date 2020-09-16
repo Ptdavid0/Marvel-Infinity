@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 3rem 0;
+  padding: 2rem 0;
 }
 
 .hero-container:nth-child(even) {

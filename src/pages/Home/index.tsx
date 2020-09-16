@@ -18,7 +18,7 @@ const Home: React.FC = () => {
   const [character, setCharacter] = useState<[Character]>();
   useEffect(() => {
     getAllCharacters((response: any) => {
-      setCharacter(response.data.data.results);
+      setCharacter(response);
     });
   }, []);
 
